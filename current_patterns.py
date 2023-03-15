@@ -1,6 +1,6 @@
-# """ПОРОЖДАЮЩИЕ ПАТТЕРНЫ"""
-#
-#
+"""ПОРОЖДАЮЩИЕ ПАТТЕРНЫ"""
+
+
 """
 Абстрактная фабрика - abstract factory
 
@@ -38,53 +38,53 @@ print(a)
 print(window)
 popover = abstract_factory('popover')
 
-#
-# # """
-# # Строитель - builder
-# #
-# # Строитель - паттерн, порождающий объекты.
-# # Отделяет конструирование сложного объекта от его представления, так что
-# # в результате одного и того же процесса конструирования могут получаться разные
-# # представления.
-# # Идеологически это напоминает слои в Docker.
-# # """
-# #
-# #
-# # class Home:
-# #
-# #     def __init__(self):
-# #         self.rooms = 0
-# #         self.windows = 0
-# #         self.roof = None
-# #
-# #     def make_rooms(self, count):
-# #         self.rooms = count
-# #
-# #     def make_windows(self, count):
-# #         self.windows = count
-# #
-# #
-# # class RedRoof:
-# #     COLOR = 'red'
-# #
-# #
-# # class GreenFoor:
-# #     COLOR = 'green'
-# #
-# #
-# # def build(rooms, windows, roof):
-# #     my_home = Home()
-# #     my_home.make_rooms(rooms)
-# #     my_home.make_windows(windows)
-# #     if roof == 'red':
-# #         my_home.roof = RedRoof()
-# #     else:
-# #         my_home.roof = GreenFoor()
-# #     return my_home
-# #
-# #
-# home = build(5, 10, 'green')
-#
+
+"""
+Строитель - builder
+
+Строитель - паттерн, порождающий объекты.
+Отделяет конструирование сложного объекта от его представления, так что
+в результате одного и того же процесса конструирования могут получаться разные
+представления.
+Идеологически это напоминает слои в Docker.
+"""
+
+
+class Home:
+
+    def __init__(self):
+        self.rooms = 0
+        self.windows = 0
+        self.roof = None
+
+    def make_rooms(self, count):
+        self.rooms = count
+
+    def make_windows(self, count):
+        self.windows = count
+
+
+class RedRoof:
+    COLOR = 'red'
+
+
+class GreenFoor:
+    COLOR = 'green'
+
+
+def build(rooms, windows, roof):
+    my_home = Home()
+    my_home.make_rooms(rooms)
+    my_home.make_windows(windows)
+    if roof == 'red':
+        my_home.roof = RedRoof()
+    else:
+        my_home.roof = GreenFoor()
+    return my_home
+
+
+home = build(5, 10, 'green')
+
 
 """
 Фабричный метод - factory
@@ -118,56 +118,56 @@ cat = Cat.call_black_cat()
 cat1 = Cat.call_white_cat()
 print (type(cat))
 print (type(cat1))
-#
-#
-# """
-# Проторип - prototype
-#
-# Прототип - паттерн, порождающий объекты.
-# Задает виды создаваемых объектов с помощью экземпляра-прототипа и создает
-# новые объекты путем копирования этого прототипа.
-# """
-#
-#
-# class Prototype:
-#
-#     def __init__(self, **attr_dict):
-#         self.__dict__.update(attr_dict)
-#
-#     def copy(self, **attr_dict):
-#         copy_instance = self.__class__(**self.__dict__)
-#         copy_instance.__dict__.update(attr_dict)
-#         return copy_instance
-#
-#
-# p = Prototype(a=1)
-# c1 = p.copy(b=2)
-#
-#
-# """
-# Синглтон - singleton
-#
-# Синглтон - паттерн, порождающий объекты.
-# Гарантирует, что у класса есть только один экземпляр, и предоставляет к нему
-# глобальную точку доступа.
-# """
-#
-#
-# class MetaSingleton:
-#
-#     default = {'value': None}
-#
-#     def __init__(self):
-#         self.__dict__ = self.default
-#
-#
-# class Singleton(MetaSingleton):
-#
-#     def __init__(self, value=None):
-#         super().__init__()
-#         if value:
-#             self.value = value
-#
-#
-# s1 = Singleton()
-# s2 = Singleton()
+
+
+"""
+Проторип - prototype
+
+Прототип - паттерн, порождающий объекты.
+Задает виды создаваемых объектов с помощью экземпляра-прототипа и создает
+новые объекты путем копирования этого прототипа.
+"""
+
+
+class Prototype:
+
+    def __init__(self, **attr_dict):
+        self.__dict__.update(attr_dict)
+
+    def copy(self, **attr_dict):
+        copy_instance = self.__class__(**self.__dict__)
+        copy_instance.__dict__.update(attr_dict)
+        return copy_instance
+
+
+p = Prototype(a=1)
+c1 = p.copy(b=2)
+
+
+"""
+Синглтон - singleton
+
+Синглтон - паттерн, порождающий объекты.
+Гарантирует, что у класса есть только один экземпляр, и предоставляет к нему
+глобальную точку доступа.
+"""
+
+
+class MetaSingleton:
+
+    default = {'value': None}
+
+    def __init__(self):
+        self.__dict__ = self.default
+
+
+class Singleton(MetaSingleton):
+
+    def __init__(self, value=None):
+        super().__init__()
+        if value:
+            self.value = value
+
+
+s1 = Singleton()
+s2 = Singleton()
